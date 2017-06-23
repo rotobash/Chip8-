@@ -12,7 +12,7 @@ namespace Chip8
 	/// <summary>
 	/// This is the main type for your game.
 	/// </summary>
-	public class Game1 : Game
+	public class MainLoop : Game
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
@@ -22,7 +22,9 @@ namespace Chip8
         KeyboardState key;
         KeyboardState oldKey;
 
-		public Game1()
+        string gameName;
+
+        public MainLoop()
 		{
             graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
@@ -48,6 +50,11 @@ namespace Chip8
 			base.Initialize();
 		}
 
+        public void SetGameName(string gameName) 
+        {
+            this.gameName = gameName.ToUpper();
+        }
+
 		/// <summary>		/// LoadContent will be called once per game and is the place to load
 		/// all of your content.
 		/// </summary>
@@ -61,7 +68,7 @@ namespace Chip8
 
             emu = new Chip8();
 
-			emu.LoadGame("Games/DRAW");
+            emu.LoadGame("Games/" + gameName);
 			//TODO: use this.Content to load your game content here 
 		}
 
