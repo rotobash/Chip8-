@@ -1,6 +1,18 @@
 # Chip8Sharp
 A Chip8 Emulator written in C#
 
+## Usage
+
+### Windows
+Ensure .NET4 redistributables are installed
+Open Chip8.exe
+
+### Linux/Mac
+Open terminal
+Navigate to Release folder
+`chmod +x Chip8`
+`./Chip8 gamename` - where the argument is the game you want to play. No argument defaults to "BRIX".
+
 ## About
 Chip8 is a virtual machine designed by Joseph Weisbecker in the mid 1970's that ran on COSMAC VIP general computers. It has a minimalistic instruction set and
 was intended to facilitate game programming on said computer. 

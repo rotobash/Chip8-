@@ -19,12 +19,14 @@ namespace Chip8
 #else
 	static class Program
 #endif
-	{
-		private static Game1 game;
+    {
+        static string gameToLoad;
+        private static MainLoop game;
 
 		internal static void RunGame()
 		{
-			game = new Game1();
+            game = new MainLoop();
+            game.SetGameName(gameToLoad);
 			game.Run();
 #if !__IOS__ && !__TVOS__
 			game.Dispose();
@@ -39,6 +41,14 @@ namespace Chip8
 #endif
 		static void Main(string[] args)
 		{
+            if (args.Length < 1)
+            {
+                gameToLoad = "BRIX";
+                Console.WriteLine("No game specified, defaulting to BRIX...");
+            }
+            else
+                gameToLoad = args[0];
+                
 #if MONOMAC
             NSApplication.Init ();
 
